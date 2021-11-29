@@ -1,6 +1,6 @@
 import cv2
 
-face_cascade = cv2.CascadeClassifier("haarcascade_frontalface.xml")
+face_cascade = cv2.CascadeClassifier("PROJECT12/haarcascade_frontalface.xml")
 
 def detect():
     cap = cv2.VideoCapture(0)
@@ -13,7 +13,7 @@ def detect():
         face = face_cascade.detectMultiScale(gray, 1.1, 4)
 
         for (x, y, w, h) in face:
-            cv2.rectangle(img, (x,y), (x+w, y+h), (255,0,0), 2)
+            cv2.rectangle(img, (x,y), (x+w, y+h), (0,255,0), 2)
 
         cv2.imshow("Face Detect", img)
 
