@@ -18,8 +18,6 @@ def time():
     speak(f'The current time is {Time}')
 
 
-time()
-
 def wiki():
     query = ("Iphone")
     results = wikipedia.summary(query, sentences=2)
@@ -28,4 +26,25 @@ def wiki():
     speak(results)
 
 
-wiki()
+def takecommand():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening....")
+        r.pause_threshold = 1
+        audio = r.listen(source)
+
+    try:
+        print("Recognizing.....")
+        query = r.recognize_google(audio, language="en-in")
+        print(f"Prosper said {query}\n")
+
+    except Exception as e:
+        print(e)
+        print("Say that again.....")
+        speak("Say that again.....")
+        return "None"
+    return query
+
+takecommand()
+
+
